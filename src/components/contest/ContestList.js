@@ -4,9 +4,11 @@ import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import ContestCard from './ContestCard';
+import Loader from '../common/Loader'
 import { connect } from 'react-redux';
 import * as contestsActions from '../../actions/contestActions'
 import { bindActionCreators } from 'redux';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const styles = theme => ({
   root: {
@@ -36,11 +38,11 @@ class ContestList extends React.Component{
     const { classes } = this.props;
 
     if(error){
-      return <div>Error! {error.message}</div>
+      return <InputLabel error>{error.message}</InputLabel>
     }
 
     if(loading){
-      return <div>Loading...</div>
+      return <Loader/>
     }
 
     return (
